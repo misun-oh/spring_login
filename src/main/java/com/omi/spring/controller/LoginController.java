@@ -33,15 +33,19 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/loginAction")
-	public String loginAction(HttpServletRequest req, HttpServletResponse res, UserDto user) {
+	public String loginAction(HttpServletRequest req, HttpServletResponse res, UserDto user, Model model) {
 		HttpSession session = req.getSession();
 		
 		/**
 		 * id/pw체크로직이 삽입 되어야 합니다.
 		 */
-		
-		session.setAttribute("user", user);
-		return "loginOk";
+		if("test".equals(user.getId())) {
+			session.setAttribute("user", user);
+			return "loginOk";			
+		} else {
+			model.addAttribute("errMsg", "로그인 실패-ID/PW를 확인해주세요.");
+			return "login";
+		}
 	}
 	
 	@RequestMapping("/logoutAction")

@@ -11,6 +11,9 @@
     
     <form action="/loginAction" method="post">
         로그인<br>
+        <P>
+        ${errMsg}
+    	</P>
         id : <input type="text" name="id" value="test"><br>
         pw : <input type="text" name="pw" value="1234"><br>
         <button type="submit">로그인</button>
